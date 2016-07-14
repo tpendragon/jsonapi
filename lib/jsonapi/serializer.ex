@@ -105,7 +105,7 @@ defmodule JSONAPI.Serializer do
   def encode_rel_data(view, data) when is_list(data) do
     Enum.map data, &(encode_rel_data(view, &1))
   end
-  def encode_rel_data(_, %{__struct__: Ecto.Association.NotLoaded}), do: []
+  def encode_rel_data(_, %{__struct__: Ecto.Association.NotLoaded}), do: nil
   def encode_rel_data(view, data) do
     %{
       type: view.type(),
